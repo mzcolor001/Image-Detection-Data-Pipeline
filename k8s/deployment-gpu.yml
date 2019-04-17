@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drug-detector-gpu-dep
+  labels:
+    app: drug-detector-gpu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drug-detector-gpu
+  template:
+    metadata:
+      labels:
+        app: drug-detector-gpu
+    spec:
+      containers:
+      - name: drug-detector-serving
+        image: hotrank/test-batching
+        args:
+        - --enable_batching
+        # - --batching_parameters_file=/home/temp/BS10-1ms.conf
+        resources:
+          limits:
+            nvidia.com/gpu: 1 # requesting 1 GPU
+        ports:
+        - name: tf-serving-port
+          containerPort: 8501
