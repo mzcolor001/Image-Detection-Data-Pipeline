@@ -13,7 +13,7 @@ Kubernetes(k8s) is a portable, extensible open-source platform for managing cont
 
 After the k8s cluster is up and running, "deployment" and "service" could be initialized using their corresponding yml files. A "deployment" specifies the container(s) and its number of replicas to be deployed, while the "service" exposes the deployment with a load balancer which is accessible from outside of the 8ks cluster.
 
-### Complete project framework
+### Project framework
 ZeroMQ(zmq) is used to generate a stream of images from an S3 bucket. Multiple CPU instances consume these images, send them to the k8s cluster for inference, and save the prediction to a MySQL database. See the diagram illustration below.
 
 ![Alt text](pics/framework.png)
